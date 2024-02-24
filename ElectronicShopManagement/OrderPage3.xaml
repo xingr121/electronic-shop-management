@@ -1,0 +1,30 @@
+﻿<Page x:Class="ElectronicShopManagement.OrderPage3"
+
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElectronicShopManagement"
+        mc:Ignorable="d"
+        Title="Order3" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="BtnOrdWiz" Click="BtnOrdWiz_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="10,27,0,0" Height="25" Content="Order Wizard"/>
+
+        <ListView Grid.Row="1" Name="LvOrders" SelectionMode="Single" Margin="10,62,10,70" SelectionChanged="LvOrders_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id" Width="25" DisplayMemberBinding="{Binding OrderId}" />
+                    <GridViewColumn Header="Customer Name" Width="100" DisplayMemberBinding="{Binding CustName}" />
+                    <GridViewColumn Header="Product Name" Width="100" DisplayMemberBinding="{Binding ProdName}" />
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding PriceAtPurchase}" />
+                    <GridViewColumn Header="Order Qty" Width="100" DisplayMemberBinding="{Binding OrderQty}" />
+                    <GridViewColumn Header="Order Total" Width="100" DisplayMemberBinding="{Binding OrderTotal}" />
+                    <GridViewColumn Header="Order Date" Width="100" DisplayMemberBinding="{Binding OrderDate}" />
+                    <GridViewColumn Header="Employee Name" Width="100" DisplayMemberBinding="{Binding EmpName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="BtnInvoice" Click="BtnInvoice_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="280,400,0,0" Height="25" Content="Make Invoice"/>
+        <Button x:Name="BtnCheckout" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="430,400,0,0" Height="25" Content="Checkout"/>
+    </Grid>
+</Page>
