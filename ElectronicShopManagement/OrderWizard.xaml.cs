@@ -135,75 +135,34 @@ namespace ElectronicShopManagement
         // In the Wizard_Finish method:
         private void Wizard_Finish(object sender, RoutedEventArgs e)
         {
-            try
+            // Gather data from wizard pages
+            string customerName = customerNameTextBlock.Text;
+            string productName = productNameComboBox.SelectedItem.ToString();
+            decimal productPrice = decimal.Parse(productPriceTextBlock.Text);
+            int orderQuantity = int.Parse(orderQuantityTextBox.Text);
+            string employeeName = employeeNameTextBlock.Text;
+            decimal orderTotal = productPrice * orderQuantity;
+
+            var orderItem = new OrderDetailsItem(customerName,orderTotal,employeeName,orderQuantity,productName,productPrice);
+            if (orderItem != null)
             {
-                // Gather data from wizard pages
-                string customerName = customerNameTextBlock.Text;
-                string productName = productNameComboBox.SelectedItem.ToString();
-                decimal productPrice = decimal.Parse(productPriceTextBlock.Text);
-                int orderQuantity = int.Parse(orderQuantityTextBox.Text);
-                DateTime orderDate = orderDatePicker.SelectedDate ?? DateTime.Now; // Default to current date/time
-                string employeeName = employeeNameTextBlock.Text;
-                decimal orderTotal = productPrice * orderQuantity;
-
-                // Save the order to the database
-                using (var dbContext = new ElectronicShopManagementDBEntities())
+                if (GlobalPro.ordercartlist == null)
                 {
-                    // Create a new Order object
-                    var order = new Order
-                    {
-                        CustName = customerName,
-                        OrderDate = orderDate,
-                        EmpName = employeeName,
-                        OrderTotal = orderTotal,
-                    };
-
-                    // Add the new order to the Orders table
-                    dbContext.Orders.Add(order);
-                    // Save changes to the database
-                    dbContext.SaveChanges();
-
-                    // Retrieve the OrderId of the newly added order
-                    int orderId = order.OrderId;
-
-                    // Retrieve the ProductId based on the selected product name
-                    var product = dbContext.Products.FirstOrDefault(p => p.ProdName == productName);
-                    if (product != null)
-                    {
-                        int productId = product.ProdId;
-
-                        // Create a new OrderItem object
-                        var orderItem = new OrderItem
-                        {
-                            OrderId = orderId,
-                            ProdId = productId,
-                            PriceAtPurchase = productPrice,
-                            OrderQty = orderQuantity
-                        };
-
-                        // Add the new order item to the OrderItems table
-                        dbContext.OrderItems.Add(orderItem);
-                        // Save changes to the database
-                        dbContext.SaveChanges();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Selected product not found.");
-                    }
+                    GlobalPro.ordercartlist = new List<OrderDetailsItem>();
                 }
-
-                // Close the OrderWizard window
-                this.Close();
-
-                // Refresh the ListView in OrderPage3
-                if (orderPage != null)
-                {
-                    orderPage.RefreshListView();
-                }
+                GlobalPro.ordercartlist.Add(orderItem);
             }
-            catch (Exception ex)
+            var result=MessageBox.Show(this, "Continue to add more produt?", "make order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("Error while finishing the wizard: " + ex.Message);
+                OrderWizard orderWizard = new OrderWizard(orderPage);
+                orderWizard.Show();
+            } else if(result==MessageBoxResult.No) {
+                Payment paymentPage=new Payment(GlobalPro.ordercartlist);
+                paymentPage.Show();
+            }
+            {
+
             }
         }
     }

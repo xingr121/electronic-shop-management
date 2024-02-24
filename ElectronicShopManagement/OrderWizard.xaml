@@ -30,7 +30,7 @@
             <xctk:WizardPage x:Name="Page2" PageType="Interior"
                        Title="Step 2"
                        Description="Select the Product."
-                       NextPage="{Binding ElementName=Page3}"
+                       NextPage="{Binding ElementName=LastPage}"
                        PreviousPage="{Binding ElementName=Page1}"
                  CanSelectNextPage="True">
                 <Grid>
@@ -44,24 +44,10 @@
                     </StackPanel>
                 </Grid>
             </xctk:WizardPage>
-            <xctk:WizardPage x:Name="Page3" PageType="Interior"
-           Title="Step 3"
-           Description="Select the Order Date."
-           NextPage="{Binding ElementName=LastPage}"
-           PreviousPage="{Binding ElementName=Page2}"
-     CanSelectNextPage="True">
-                <StackPanel Margin="0 0 0 10">
-                    <Grid>
-                        <StackPanel Margin="0 0 0 10">
-                            <TextBlock Text="Order Date:" VerticalAlignment="Center"/>
-                            <DatePicker Name="orderDatePicker" VerticalAlignment="Center" Margin="0 5"/>
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
-            </xctk:WizardPage>
+           
 
             <xctk:WizardPage x:Name="LastPage" PageType="Interior"
-                                   Title="Step 4"
+                                   Title="Step 3"
                                    Description="Select the Employee."
                               PreviousPage="{Binding ElementName=Page3}"
                                    CanFinish="True">

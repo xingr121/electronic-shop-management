@@ -10,12 +10,13 @@ namespace ElectronicShopManagement
     {
      
 
-        public Order(string custName, string empName, decimal? orderTotal, string paymentId)
+        public Order(string custName, string empName, decimal? orderTotal, string paymentId,DateTime orderDate)
         {
             CustName = custName;
             EmpName = empName;
             OrderTotal = orderTotal;
             PaymentId = paymentId;
+            OrderDate = orderDate;
         }
     }
 
