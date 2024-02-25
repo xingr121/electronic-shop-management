@@ -4,55 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicShopManagement"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded"
-        Title="MainWindow" Height="650" Width="1000">
-    <Grid>
-        <StackPanel Width="100" HorizontalAlignment="Left" Margin="31,80,0,80">
+        Title="Welcome" Height="650" Width="1000">
+    <Grid Background="#F6F6F8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="13*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <StackPanel Width="125" HorizontalAlignment="Left" Margin="0,80,0,80">
             <Button Name="BtnHome" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnHome_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Images/img_home.png"  Width="19"/>
-                    <TextBlock Margin="10,5">Home </TextBlock>
+                    <TextBlock Margin="10,0" Foreground="Black">Home </TextBlock>
                 </StackPanel>
             </Button>
             <Button x:Name="BtnP" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnP_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="Images/img_product.png"  Width="19"/>
-                    <TextBlock Margin="10,5"> Products</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black"> Products</TextBlock>
                 </StackPanel>
             </Button>
             <Button Name="BtnC" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnC_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Images/img_customer.png"  Width="19"/>
-                    <TextBlock Margin="10,5"> Customers</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black"> Customers</TextBlock>
                 </StackPanel>
             </Button>
             <Button Name="BtnE" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnE_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Images/img_customer.png"  Width="19"/>
-                    <TextBlock Margin="10,5"> Employees</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black"> Employees</TextBlock>
                 </StackPanel>
             </Button>
             <Button Name="BtnO" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnO_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal"> 
                 <Image Source="/Images/img_transaction.png"  Width="19"/>
-                <TextBlock Margin="10,5"> Order</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black"> Order</TextBlock>
                 </StackPanel>
             </Button>
             <Button Name="BtnReport" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Click="BtnReport_Click" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Images/img_order.png"  Width="19"/>
-                    <TextBlock Margin="10,5"> Reports</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black"> Reports</TextBlock>
                 </StackPanel>
             </Button>
             <Button Name="BtnLogout" Click="BtnLogout_Click" BorderThickness="0" Background="Transparent" HorizontalAlignment="Left" Margin="0,25,0,10">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Images/img_logout.png"  Width="19"/>
-                    <TextBlock Margin="10,5">Logout</TextBlock>
+                    <TextBlock Margin="10,5" Foreground="Black" Height="35" Width="100">Logout</TextBlock>
                 </StackPanel> 
             </Button>
         </StackPanel>
-        <Frame x:Name="Main" Margin="150, 20,0,0" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>
-
+        </Grid>
+        <Grid Grid.Column="1" Background="#F6F5F8" >
+            <Frame x:Name="Main" Margin="10, 20,0,0" NavigationUIVisibility="Hidden" Loaded="Main_Loaded"/>
+        </Grid>
     </Grid>
 </Window>

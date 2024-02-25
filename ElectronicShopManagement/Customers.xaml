@@ -8,24 +8,24 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Customers">
 
-    <Grid>
+    <Grid Margin="10,30">
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,5,0,0">Customer List</TextBlock>
-        <ComboBox Name="FilterBy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,27,0,0" >
+        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Margin="10,5,0,0">Customer List</TextBlock>
+        <ComboBox Name="FilterBy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,47,0,0" >
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Phone"/>
         </ComboBox>
 
 
-        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="220,27,0,0" Height="21">Search a customer</TextBox>
+        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="220,47,0,0" Height="21">Search a customer</TextBox>
 
-        <ListView Grid.Row="1" Name="LvCustomers" SelectionMode="Single" Margin="10,62,10,10">
+        <ListView Grid.Row="1" Name="LvCustomers" SelectionMode="Single" Margin="10,82,10,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="35" DisplayMemberBinding="{Binding CustId}" />
-                    <GridViewColumn Header="Customer Name" Width="150" DisplayMemberBinding="{Binding CustName}" />
-                    <GridViewColumn Header="Address" Width="220" DisplayMemberBinding="{Binding CustAddress}" />
-                    <GridViewColumn Header="Phone Number" Width="200" DisplayMemberBinding="{Binding CustPhone}" />
+                    <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding CustId}" />
+                    <GridViewColumn Header="Customer Name"  DisplayMemberBinding="{Binding CustName}" />
+                    <GridViewColumn Header="Address"  DisplayMemberBinding="{Binding CustAddress}" />
+                    <GridViewColumn Header="Phone Number"  DisplayMemberBinding="{Binding CustPhone}" />
                 </GridView>
 
             </ListView.View>
@@ -36,6 +36,6 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="500,27,0,0" Height="21" Content="Add new customer"/>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="500,47,0,0"  Content="Add new customer"/>
     </Grid>
 </Page>

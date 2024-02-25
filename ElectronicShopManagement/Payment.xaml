@@ -10,10 +10,10 @@
         <ListView x:Name="lvOrders" Grid.Column="0" Margin="24,10,24,143">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Product Name" Width="200" DisplayMemberBinding="{Binding ProdName}" />
-                    <GridViewColumn Header="Price" Width="150" DisplayMemberBinding="{Binding PriceAtPurchase}" />
-                    <GridViewColumn Header="Qty" Width="50" DisplayMemberBinding="{Binding OrderQty}" />
-                    <GridViewColumn Header="Total" Width="150" DisplayMemberBinding="{Binding OrderTotal}" />
+                    <GridViewColumn Header="Product Name"  DisplayMemberBinding="{Binding ProdName}" />
+                    <GridViewColumn Header="Price"  DisplayMemberBinding="{Binding PriceAtPurchase}" />
+                    <GridViewColumn Header="Qty"  DisplayMemberBinding="{Binding OrderQty}" />
+                    <GridViewColumn Header="Total"  DisplayMemberBinding="{Binding OrderTotal}" />
                 </GridView>
             </ListView.View>
         </ListView>
@@ -23,7 +23,7 @@
             <TextBlock Name="Tax" Text="Estimated Tax: "></TextBlock>
             <TextBlock Name="OrderTotal" Text="Order Total"/>
         </StackPanel>
-        <Button Name="BtnCancel" Click="BtnCancel_Click"  Content="Cancel" HorizontalAlignment="Left" Margin="155,260,0,0" Height="30" Width="93"/>
-        <Button Name="BtnPlace" Click="BtnPlace_Click"  Content="Place Order" HorizontalAlignment="Left" Margin="350,260,0,0" Height="30" Width="92"/>
+        <Button Name="BtnCancel" Click="BtnCancel_Click"  Content="Cancel" HorizontalAlignment="Left" Margin="155,260,0,0" />
+        <Button Name="BtnPlace" Click="BtnPlace_Click"  Content="Place Order" HorizontalAlignment="Left" Margin="350,260,0,0" />
     </Grid>
 </Window>

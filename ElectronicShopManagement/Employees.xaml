@@ -17,16 +17,16 @@
             <ComboBoxItem Content="Phone"/>
         </ComboBox>
 
-        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="210,27,0,0" Height="21">Search an employee</TextBox>
+        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="210,27,0,0" >Search an employee</TextBox>
 
         <ListView Grid.Row="1" Name="LvEmployees" SelectionMode="Single" Margin="10,62,10,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="25" DisplayMemberBinding="{Binding EmpId}" />
-                    <GridViewColumn Header="Employee Name" Width="150" DisplayMemberBinding="{Binding EmpName}" />
-                    <GridViewColumn Header="Password" Width="120" DisplayMemberBinding="{Binding EmpPassword}" />
-                    <GridViewColumn Header="Address" Width="220" DisplayMemberBinding="{Binding EmpAddress}" />
-                    <GridViewColumn Header="Phone Number" Width="150" DisplayMemberBinding="{Binding EmpPhone}" />
+                    <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding EmpId}" />
+                    <GridViewColumn Header="Employee Name"  DisplayMemberBinding="{Binding EmpName}" />
+                    <GridViewColumn Header="Password"  DisplayMemberBinding="{Binding EmpPassword}" />
+                    <GridViewColumn Header="Address"  DisplayMemberBinding="{Binding EmpAddress}" />
+                    <GridViewColumn Header="Phone Number"  DisplayMemberBinding="{Binding EmpPhone}" />
                 </GridView>
 
             </ListView.View>
@@ -37,6 +37,6 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="500,27,0,0" Height="21" Content="Add new employee"/>
+        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="500,27,0,0"  Content="Add new employee"/>
     </Grid>
 </Page>
