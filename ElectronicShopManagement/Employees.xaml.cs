@@ -88,6 +88,18 @@ namespace ElectronicShopManagement
                 this.LvEmployees.ItemsSource = emps.ToList();
             }
         }
-    
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddEditEmployee dialog = new AddEditEmployee();
+            Window parentWindow = Window.GetWindow(this);
+            dialog.Owner = parentWindow;
+            if (dialog.ShowDialog() == true)
+            {
+                ElectronicShopManagementDBEntities db = new ElectronicShopManagementDBEntities();
+                var emps = from em in db.Employees select em;
+                this.LvEmployees.ItemsSource = emps.ToList();
+            }
+        }
     }
 }

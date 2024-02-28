@@ -8,9 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Employees">
 
-    <Grid>
-
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,5,0,0">Employees List</TextBlock>
+    <Grid Margin="0,50">
 
         <ComboBox Name="FilterBy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,27,0,0" >
             <ComboBoxItem Content="Name"/>
@@ -37,6 +35,6 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Button x:Name="btnAdd" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="500,27,0,0"  Content="Add new employee"/>
+        <Button x:Name="btnAdd" Click="btnAdd_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="500,25,0,0"  Content="Add new employee"/>
     </Grid>
 </Page>

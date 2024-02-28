@@ -9,7 +9,6 @@ namespace ElectronicShopManagement
     /// </summary>
     public partial class Login : Window
     {
-        // Create an instance of Entity Framework DbContext
         private readonly ElectronicShopManagementDBEntities _dbContext = new ElectronicShopManagementDBEntities();
 
         public Login()
@@ -21,7 +20,12 @@ namespace ElectronicShopManagement
         {
             try
             {
-                // Query the Employees table using LINQ to Entities
+                if (string.IsNullOrWhiteSpace(txtEmpName.Text) || string.IsNullOrWhiteSpace(txtPassword.Password))
+                {
+                    MessageBox.Show("Please enter both Employee Name and Password.");
+                    return;
+                }
+
                 var employee = _dbContext.Employees
                     .FirstOrDefault(emp => emp.EmpName == txtEmpName.Text && emp.EmpPassword == txtPassword.Password);
 
@@ -34,7 +38,6 @@ namespace ElectronicShopManagement
                     {
                         GlobalPro.userType = "U";
                     }
-                    // Login successful
                     MainWindow dashboard = new MainWindow();
                     dashboard.Show();
                     this.Close();

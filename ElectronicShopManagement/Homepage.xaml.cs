@@ -1,7 +1,10 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using Stripe.Climate;
 using System;
+using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Windows.Controls;
 namespace ElectronicShopManagement
 {
@@ -15,6 +18,12 @@ namespace ElectronicShopManagement
             InitializeComponent();
             LoadChartData();
             DataContext = this;
+            decimal dailyTotal =GetDailyOrderTotal();
+            string dailyTotalText = $"{(dailyTotal / 1000):0.##}K";
+            TbkDay.Text = dailyTotalText;
+            decimal monthlyTotal = GetMonthlyOrderTotal();
+            string monthlyTotalText = $"{(monthlyTotal / 1000):0.##}K";
+            TbkMonth.Text = monthlyTotalText;
         }
 
         public SeriesCollection SeriesCollection { get; set; }
@@ -51,6 +60,26 @@ namespace ElectronicShopManagement
         {
             // Add spaces between each character in the label
             return string.Join(" ", label.Select(c => c.ToString()));
+        }
+
+        public decimal GetMonthlyOrderTotal()
+        {
+            ElectronicShopManagementDBEntities db = new ElectronicShopManagementDBEntities();
+            decimal monthlyTotal = db.Orders
+                .Where(o => o.OrderDate.HasValue && o.OrderDate.Value.Month == DateTime.Today.Month && o.OrderDate.Value.Year == DateTime.Today.Year)
+                .Sum(o => (decimal?)o.OrderTotal) ?? 0;
+
+            return monthlyTotal;
+        }
+
+        public decimal GetDailyOrderTotal()
+        {
+            ElectronicShopManagementDBEntities db = new ElectronicShopManagementDBEntities();
+            decimal dailyTotal = db.Orders
+               .Where(o => DbFunctions.TruncateTime(o.OrderDate) == DateTime.Today)
+                .Sum(o => (decimal?)o.OrderTotal) ?? 0;
+
+            return dailyTotal;
         }
     }
 }

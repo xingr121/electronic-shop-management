@@ -90,5 +90,19 @@ namespace ElectronicShopManagement
                 this.LvCustomers.ItemsSource = cus.ToList();
             }
         }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            EditAddCustomer dialog = new EditAddCustomer();
+            Window parentWindow = Window.GetWindow(this);
+            dialog.Owner = parentWindow;
+            if (dialog.ShowDialog() == true)
+            {
+                ElectronicShopManagementDBEntities db = new ElectronicShopManagementDBEntities();
+                var cus = from c in db.Customers select c;
+                this.LvCustomers.ItemsSource =cus.ToList();
+            }
+        }
     }
+    
 }

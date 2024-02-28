@@ -20,7 +20,7 @@ namespace ElectronicShopManagement
     public partial class AddEditEmployee : Window
     {
         Employee currEmployee;
-        public AddEditEmployee(Employee currEmployee)
+        public AddEditEmployee(Employee currEmployee=null)
         {
            this.currEmployee = currEmployee;
             InitializeComponent();

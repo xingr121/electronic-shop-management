@@ -93,7 +93,7 @@ namespace ElectronicShopManagement
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
             AddProduct dialog= new AddProduct();
-            Window parentWindow = Window.GetWindow(this); // Get the parent window
+            Window parentWindow = Window.GetWindow(this); 
             dialog.Owner = parentWindow;
             if (dialog.ShowDialog() == true)
             {

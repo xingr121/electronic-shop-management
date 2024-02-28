@@ -21,7 +21,7 @@ namespace ElectronicShopManagement
     public partial class OrderWizard : Window
     {
         private readonly ElectronicShopManagementDBEntities _dbContext = new ElectronicShopManagementDBEntities();
-        
+
         private OrderPage3 orderPage;
 
         public OrderWizard(OrderPage3 orderPage)
@@ -31,6 +31,19 @@ namespace ElectronicShopManagement
             PopulateCustomerIdComboBox();
             PopulateProductNameComboBox();
             PopulateEmployeeIdComboBox();
+            if (GlobalPro.ordercartlist != null && GlobalPro.ordercartlist.Count > 0)
+            {
+                string customerName = GlobalPro.ordercartlist[0].CustName;
+
+                int customerId = _dbContext.Customers
+                                          .Where(c => c.CustName == customerName)
+                                          .Select(c => c.CustId)
+                                          .FirstOrDefault();
+
+                customerIdComboBox.SelectedValue = customerId;
+                customerNameTextBlock.Text = customerName;
+            }
+
         }
 
         private void PopulateCustomerIdComboBox()
@@ -83,7 +96,16 @@ namespace ElectronicShopManagement
                     if (customer != null)
                     {
                         customerNameTextBlock.Text = customer.CustName;
+                        Page1.CanSelectNextPage = true;
                     }
+                    else
+                    {
+                        Page1.CanSelectNextPage = false;
+                    }
+                }
+                else
+                {
+                    Page1.CanSelectNextPage = false;
                 }
             }
             catch (Exception ex)
@@ -103,7 +125,16 @@ namespace ElectronicShopManagement
                     if (product != null)
                     {
                         productPriceTextBlock.Text = product.ProdPrice.ToString();
+                        Page2.CanSelectNextPage = true;
                     }
+                    else
+                    {
+                        Page2.CanSelectNextPage = false;
+                    }
+                }
+                else
+                {
+                    Page2.CanSelectNextPage = false;
                 }
             }
             catch (Exception ex)
@@ -123,7 +154,16 @@ namespace ElectronicShopManagement
                     if (employee != null)
                     {
                         employeeNameTextBlock.Text = employee.EmpName;
+                        LastPage.CanFinish = true;
                     }
+                    else
+                    {
+                        LastPage.CanFinish = false;
+                    }
+                }
+                else
+                {
+                    LastPage.CanFinish = false;
                 }
             }
             catch (Exception ex)
@@ -135,34 +175,59 @@ namespace ElectronicShopManagement
         // In the Wizard_Finish method:
         private void Wizard_Finish(object sender, RoutedEventArgs e)
         {
-            // Gather data from wizard pages
-            string customerName = customerNameTextBlock.Text;
-            string productName = productNameComboBox.SelectedItem.ToString();
-            decimal productPrice = decimal.Parse(productPriceTextBlock.Text);
-            int orderQuantity = int.Parse(orderQuantityTextBox.Text);
-            string employeeName = employeeNameTextBlock.Text;
-            decimal orderTotal = productPrice * orderQuantity;
-
-            var orderItem = new OrderDetailsItem(customerName,orderTotal,employeeName,orderQuantity,productName,productPrice);
-            if (orderItem != null)
+            try
             {
-                if (GlobalPro.ordercartlist == null)
+                // Gather data from wizard pages
+                string employeeId = employeeIdComboBox.SelectedItem?.ToString();
+                string customerName = customerNameTextBlock.Text;
+                string productName = productNameComboBox.SelectedItem?.ToString();
+                decimal productPrice = decimal.Parse(productPriceTextBlock.Text);
+                int orderQuantity = int.Parse(orderQuantityTextBox.Text);
+                string employeeName = employeeNameTextBlock.Text;
+                decimal orderTotal = productPrice * orderQuantity;
+
+                // Retrieve product details from the database
+                var product = _dbContext.Products.FirstOrDefault(p => p.ProdName == productName);
+                if (product != null)
                 {
-                    GlobalPro.ordercartlist = new List<OrderDetailsItem>();
+                    // Check if order quantity exceeds available quantity
+                    if (orderQuantity > product.ProdQty)
+                    {
+                        MessageBox.Show("Order quantity exceeds available quantity.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return; // Do not proceed further
+                    }
                 }
-                GlobalPro.ordercartlist.Add(orderItem);
-            }
-            var result=MessageBox.Show(this, "Continue to add more produt?", "make order", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(result == MessageBoxResult.Yes)
-            {
-                OrderWizard orderWizard = new OrderWizard(orderPage);
-                orderWizard.Show();
-            } else if(result==MessageBoxResult.No) {
-                Payment paymentPage=new Payment(GlobalPro.ordercartlist);
-                paymentPage.Show();
-            }
-            {
+                else
+                {
+                    MessageBox.Show("Selected product not found.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return; // Do not proceed further
+                }
 
+                var orderItem = new OrderDetailsItem(customerName, orderTotal, employeeName, orderQuantity, productName, productPrice);
+                if (orderItem != null)
+                {
+                    if (GlobalPro.ordercartlist == null)
+                    {
+                        GlobalPro.ordercartlist = new List<OrderDetailsItem>();
+                    }
+                    GlobalPro.ordercartlist.Add(orderItem);
+                }
+
+                var result = MessageBox.Show(this, "Continue to add more products?", "Make order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    OrderWizard orderWizard = new OrderWizard(orderPage);
+                    orderWizard.Show();
+                }
+                else if (result == MessageBoxResult.No)
+                {
+                    Payment paymentPage = new Payment(GlobalPro.ordercartlist);
+                    paymentPage.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

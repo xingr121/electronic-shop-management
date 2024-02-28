@@ -34,7 +34,7 @@ namespace ElectronicShopManagement
             var orderDetails = from order in db.Orders
                                join orderItem in db.OrderItems on order.OrderId equals orderItem.OrderId
                                join product in db.Products on orderItem.ProdId equals product.ProdId
-                               select new OrderDetailsItem // Create an OrderDetailsItem object
+                               select new OrderDetailsItem
                                {
                                    OrderId = order.OrderId,
                                    CustName = order.CustName,
@@ -79,11 +79,10 @@ namespace ElectronicShopManagement
 
         private void BtnInvoice_Click(object sender, RoutedEventArgs e)
         {
-            if (selectedOrderItem != null) // Check if an order item is selected
+            if (selectedOrderItem != null)
             {
-                // Pass the selected item data to the InvoicePage
-                InvoicePage invoicePage = new InvoicePage(selectedOrderItem);
-                invoicePage.Show();
+                InvoicePage2 invoicePage = new InvoicePage2(selectedOrderItem);
+                invoicePage.ShowDialog();
             }
             else
             {
@@ -95,21 +94,22 @@ namespace ElectronicShopManagement
         {
             if (LvOrders.SelectedItem != null)
             {
-                // Ensure correct type casting
                 var selectedOrder = LvOrders.SelectedItem as dynamic;
 
-                // Create an OrderDetailsItem object using the selected item data
-                selectedOrderItem = new OrderDetailsItem
+                if (selectedOrder != null)
                 {
-                    OrderId = selectedOrder.OrderId,
-                    CustName = selectedOrder.CustName,
-                    OrderTotal = selectedOrder.OrderTotal,
-                    OrderDate = selectedOrder.OrderDate,
-                    EmpName = selectedOrder.EmpName,
-                    OrderQty = selectedOrder.OrderQty,
-                    ProdName = selectedOrder.ProdName,
-                    PriceAtPurchase = selectedOrder.PriceAtPurchase
-                };
+                    selectedOrderItem = new OrderDetailsItem
+                    {
+                        OrderId = selectedOrder.OrderId,
+                        CustName = selectedOrder.CustName,
+                        OrderTotal = selectedOrder.OrderTotal,
+                        OrderDate = selectedOrder.OrderDate,
+                        EmpName = selectedOrder.EmpName,
+                        OrderQty = selectedOrder.OrderQty,
+                        ProdName = selectedOrder.ProdName,
+                        PriceAtPurchase = selectedOrder.PriceAtPurchase
+                    };
+                }
             }
         }
     }

@@ -160,8 +160,8 @@
     <Compile Include="Homepage.xaml.cs">
       <DependentUpon>Homepage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InvoicePage.xaml.cs">
-      <DependentUpon>InvoicePage.xaml</DependentUpon>
+    <Compile Include="InvoicePage2.xaml.cs">
+      <DependentUpon>InvoicePage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModelPatial\Customer.cs" />
     <Compile Include="ModelPatial\Employee.cs" />
@@ -207,7 +207,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InvoicePage.xaml">
+    <Page Include="InvoicePage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

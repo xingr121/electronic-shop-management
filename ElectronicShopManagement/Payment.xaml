@@ -3,27 +3,94 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ElectronicShopManagement"
         mc:Ignorable="d"
-        Title="Payment" Height="350" Width="600">
+        Title="Payment" Height="850" Width="535" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" FontFamily="Roboto" >
     <Grid>
-        <ListView x:Name="lvOrders" Grid.Column="0" Margin="24,10,24,143">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Product Name"  DisplayMemberBinding="{Binding ProdName}" />
-                    <GridViewColumn Header="Price"  DisplayMemberBinding="{Binding PriceAtPurchase}" />
-                    <GridViewColumn Header="Qty"  DisplayMemberBinding="{Binding OrderQty}" />
-                    <GridViewColumn Header="Total"  DisplayMemberBinding="{Binding OrderTotal}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <StackPanel Margin="24,200,24,10" >
-            <TextBlock Name="cusName"  Text=""/>
-            <TextBlock Name="SubTotal" Text="SubTotal: "></TextBlock>
-            <TextBlock Name="Tax" Text="Estimated Tax: "></TextBlock>
-            <TextBlock Name="OrderTotal" Text="Order Total"/>
-        </StackPanel>
-        <Button Name="BtnCancel" Click="BtnCancel_Click"  Content="Cancel" HorizontalAlignment="Left" Margin="155,260,0,0" />
-        <Button Name="BtnPlace" Click="BtnPlace_Click"  Content="Place Order" HorizontalAlignment="Left" Margin="350,260,0,0" />
+        
+        <Button Name="BtnInvoice" Click="BtnInvoice_Click"  HorizontalAlignment="Right" Margin="10 40 90 10" VerticalAlignment="Top">
+            <materialDesign:PackIcon Kind="Printer" />
+        </Button>
+        <Button Name="BtnClose" Click="BtnClose_Click"  HorizontalAlignment="Right" Margin="10 40 30 10" VerticalAlignment="Top">
+            <materialDesign:PackIcon Kind="Close" />
+        </Button>
+        <Grid x:Name="print">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="500"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Margin="30" Grid.Row="0">
+                <TextBlock Name="TbInvoice" Text="Receipt" VerticalAlignment="Center" FontSize="35" FontWeight="Bold" Foreground="#FFFBE188"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="20">
+                <Grid Name="information" HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Margin="10">
+                        <TextBlock Name="TxtcusName"  Text="" FontSize="20" Margin="5"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Order Date:" FontSize="12" Margin="5"/>
+                            <TextBlock Name="TxtorderDate" Text="" FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Order Id:" FontSize="12" Margin="5"/>
+                            <TextBlock Name="TxtOrderId" Text="" FontSize="12" Margin="5" FontWeight="DemiBold"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="10">
+                        <TextBlock Text="Electronic Shop" FontSize="18" Margin="5" HorizontalAlignment="Right" FontWeight="DemiBold"/>
+                        <TextBlock Text="132 Rue Sherbrooke O" FontSize="12" Margin="5" HorizontalAlignment="Right"/>
+                        <TextBlock Text="Montréal, QC H3H 1M9" FontSize="12" Margin="5" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Grid>
+
+                
+                <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
+                <ListView x:Name="lvOrders" Height="291"  >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Product Name"  DisplayMemberBinding="{Binding ProdName}" />
+                            <GridViewColumn Header="Price"  DisplayMemberBinding="{Binding PriceAtPurchase}" />
+                            <GridViewColumn Header="Qty"  DisplayMemberBinding="{Binding OrderQty}" />
+                            <GridViewColumn Header="Total"  DisplayMemberBinding="{Binding OrderTotal}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="20 0 20 50">
+                <Grid Margin="10 20 10 0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel   Grid.Column="3">
+                        <TextBlock Name="SubTotal" Text="SubTotal: "></TextBlock>
+                        <TextBlock Name="Tax" Text="Estimated Tax: "></TextBlock>
+                        <TextBlock Name="OrderTotal" Text="Order Total"/>
+                    </StackPanel>
+
+                </Grid>
+                <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <Button Name="BtnCancel" Click="BtnCancel_Click"  Content="Cancel" HorizontalAlignment="Left"  />
+                        <Button Name="BtnPlace" Click="BtnPlace_Click"  Content="Place Order" HorizontalAlignment="Left"  />
+                    </StackPanel>
+                </Grid>
+                <Rectangle Fill="Black" Height="1" Margin="5" Opacity="0.5"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:ElectronicShopManagement"
         mc:Ignorable="d" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Title="EditAddCustomer" Height="250" Width="400">
-    <Grid>
+        Title="EditAddCustomer" Height="350" Width="500">
+    <Grid Margin="50">
 
         <Label Content="Customer Name:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         <Label Content="Customer Address:" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         <Label Content="Phone number:" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         
-        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
         
-        <TextBox Name="AddressInput" HorizontalAlignment="Left" Margin="189,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <TextBox Name="PhoneInput" HorizontalAlignment="Left" Margin="189,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <Button IsCancel="true" Content="Cancel" HorizontalAlignment="Left" Margin="49,190,0,0" VerticalAlignment="Top" Width="132"/>
-        <Button Name="BtnSave" Click="BtnSave_Click" Content="Save" HorizontalAlignment="Left" Margin="208,190,0,0" VerticalAlignment="Top" Width="130"/>
+        <TextBox Name="AddressInput" HorizontalAlignment="Left" Margin="189,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="PhoneInput" HorizontalAlignment="Left" Margin="189,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <Button IsCancel="true" Content="Cancel" HorizontalAlignment="Left" Margin="90,190,0,0" VerticalAlignment="Top" />
+        <Button Name="BtnSave" Click="BtnSave_Click" Content="Save" HorizontalAlignment="Left" Margin="230,190,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>

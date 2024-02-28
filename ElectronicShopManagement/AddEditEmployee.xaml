@@ -6,16 +6,16 @@
         xmlns:local="clr-namespace:ElectronicShopManagement"
         mc:Ignorable="d" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Title="AddEditEmployee" Height="250" Width="400">
-    <Grid>
+        Title="AddEditEmployee" Height="350" Width="500">
+    <Grid Margin="50">
         <Label Content="Employee Name:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         <Label Content="Employee Address:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
         <Label Content="Phone Number:" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
-        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <TextBox Name="Password" HorizontalAlignment="Left" Margin="189,69,0,0"  VerticalAlignment="Top" Width="194" />
-        <TextBox Name="AddressInput" HorizontalAlignment="Left" Margin="189,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <TextBox Name="PhoneInput" HorizontalAlignment="Left" Margin="189,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="Password" HorizontalAlignment="Left" Margin="189,55,0,0"  VerticalAlignment="Top" Width="194" />
+        <TextBox Name="AddressInput" HorizontalAlignment="Left" Margin="189,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <TextBox Name="PhoneInput" HorizontalAlignment="Left" Margin="189,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
         <Button IsCancel="true" Content="Cancel" HorizontalAlignment="Left" Margin="49,190,0,0" VerticalAlignment="Top" Width="132"/>
         <Button Name="BtnSave" Click="BtnSave_Click" Content="Save" HorizontalAlignment="Left" Margin="208,190,0,0" VerticalAlignment="Top" Width="130"/>
     </Grid>

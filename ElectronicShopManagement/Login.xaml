@@ -5,15 +5,14 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ElectronicShopManagement"
       mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-       Title="Login" Height="350" Width="300" FontSize="14" Background="#04c582">
+       Title="Login" Height="400" Width="300" FontSize="14" Background="#009dd1">
 
     <Border Background="#2e3137" CornerRadius="20" Margin="20">
-        <StackPanel Margin="20,21,20,19">
+        <StackPanel Margin="20,20,20,19">
             <Label Content="Login" Foreground="White" FontSize="25" HorizontalAlignment="Center"/>
-            <Separator></Separator>
-            <Label Content="Employee Name" Foreground="White"/>
+            <Label Content="Employee Name" Margin="0 15 0 5" Foreground="White"/>
             <TextBox Name="txtEmpName" Background="#545d6a" Foreground="White" FontSize="18"/>
-            <Label Content="Password" Foreground="White"/>
+            <Label Content="Password" Margin="0 15 0 5" Foreground="White"/>
             <PasswordBox Name="txtPassword" Background="#545d6a" Foreground="White" FontSize="18"/>
             <Button Name="btnSubmit" Click="btnSubmit_Click" Content="Submit" Margin="60 30" Background="#545d6a" Foreground="White" FontSize="15"/>
         </StackPanel>

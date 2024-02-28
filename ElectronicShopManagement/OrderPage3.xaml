@@ -6,25 +6,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicShopManagement"
         mc:Ignorable="d"
-        Title="Order3" Height="450" Width="800">
+        Title="Orders" Height="450" Width="800">
     <Grid>
-        <Button x:Name="BtnOrdWiz" Click="BtnOrdWiz_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="10,27,0,0"  Content="Make a Order "/>
+        <Button x:Name="BtnOrdWiz" Click="BtnOrdWiz_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Width="117" Margin="10,12,0,0"  Content="Make Order"/>
 
-        <ListView Grid.Row="1" Name="LvOrders" SelectionMode="Single" Margin="10,62,10,70" SelectionChanged="LvOrders_SelectionChanged">
+        <ListView Grid.Row="1" Name="LvOrders" SelectionMode="Single" Margin="10,47,10,10" SelectionChanged="LvOrders_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding OrderId}" />
-                    <GridViewColumn Header="Customer Name"  DisplayMemberBinding="{Binding CustName}" />
-                    <GridViewColumn Header="Product Name" DisplayMemberBinding="{Binding ProdName}" />
-                    <GridViewColumn Header="Price"  DisplayMemberBinding="{Binding PriceAtPurchase}" />
-                    <GridViewColumn Header="Order Qty"  DisplayMemberBinding="{Binding OrderQty}" />
-                    <GridViewColumn Header="Order Total"  DisplayMemberBinding="{Binding OrderTotal}" />
+                    <GridViewColumn Header="Id" Width="75" DisplayMemberBinding="{Binding OrderId}" />
+                    <GridViewColumn Header="Customer Name" Width="170"  DisplayMemberBinding="{Binding CustName}" />
+                    <GridViewColumn Header="Product Name" Width="170" DisplayMemberBinding="{Binding ProdName}" />
+                    <GridViewColumn Header="Price"  Width="100" DisplayMemberBinding="{Binding PriceAtPurchase}" />
+                    <GridViewColumn Header="Qty" Width="85" DisplayMemberBinding="{Binding OrderQty}" />
+                    <GridViewColumn Header="Total" Width="100"  DisplayMemberBinding="{Binding OrderTotal}" />
                     <GridViewColumn Header="Order Date"  DisplayMemberBinding="{Binding OrderDate}" />
-                    <GridViewColumn Header="Employee Name"  DisplayMemberBinding="{Binding EmpName}" />
+                    <GridViewColumn Header="Employee" Width="170"  DisplayMemberBinding="{Binding EmpName}" />
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="BtnInvoice" Click="BtnInvoice_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="280,400,0,0" Content="Make Invoice"/>
-        <Button x:Name="BtnCheckout" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="430,400,0,0"  Content="Checkout"/>
+        <Button x:Name="BtnInvoice" Click="BtnInvoice_Click" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="150,12,0,0"  Content="Make Invoice"/>
+       
     </Grid>
 </Page>

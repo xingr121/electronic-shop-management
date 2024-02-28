@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:ElectronicShopManagement"
         mc:Ignorable="d" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
-        Title="AddProduct" Height="250" Width="400">
-    <Grid>
+        Title="AddProduct" Height="350" Width="500">
+    <Grid Margin="50,20">
         
-        <Label Content="Product Name:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
-        <Label Content="Product Category:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
-        <Label Content="Product Price:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
-        <Label Content="Product Quantity:" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" Width="155"/>
-        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,38,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <ComboBox Name="Category" HorizontalAlignment="Left" Margin="189,69,0,0"  VerticalAlignment="Top" Width="194">
+        <Label Content="Product Name:" HorizontalAlignment="Left" Margin="10,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" />
+        <Label Content="Product Category:" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" />
+        <Label Content="Product Price:" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" />
+        <Label Content="Product Quantity:" HorizontalAlignment="Left" Margin="10,142,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.629,-0.64" />
+        <TextBox Name="NameInput" HorizontalAlignment="Left" Margin="189,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <ComboBox Name="Category" HorizontalAlignment="Left" Margin="189,55,0,0"  VerticalAlignment="Top" Width="194">
             <ComboBoxItem Name="Computer" Content="Computer"/>
             <ComboBoxItem Name="Phone" Content="Phone"/>
             <ComboBoxItem Name="Laptop" Content="Laptop"/>
@@ -22,9 +22,9 @@
             <ComboBoxItem Name="Camera" Content="Camera"/>
             <ComboBoxItem Name="Keyboard" Content="KeyBoard"/>
         </ComboBox>
-        <TextBox Name="PriceInput" HorizontalAlignment="Left" Margin="189,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <TextBox Name="QtyInput" HorizontalAlignment="Left" Margin="189,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
-        <Button IsCancel="true" Content="Cancel" HorizontalAlignment="Left" Margin="49,190,0,0" VerticalAlignment="Top" Width="132"/>
-        <Button Name="BtnSave" Click="BtnSave_Click" Content="Save" HorizontalAlignment="Left" Margin="208,190,0,0" VerticalAlignment="Top" Width="130"/>
+        <TextBox Name="PriceInput" HorizontalAlignment="Left" Margin="189,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" />
+        <TextBox Name="QtyInput" HorizontalAlignment="Left" Margin="189,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
+        <Button IsCancel="true" Content="Cancel" HorizontalAlignment="Left" Margin="49,200,0,0" VerticalAlignment="Top" />
+        <Button Name="BtnSave" Click="BtnSave_Click" Content="Save" HorizontalAlignment="Left" Margin="208,200,0,0" VerticalAlignment="Top" />
     </Grid>
 </Window>

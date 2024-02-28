@@ -4,20 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElectronicShopManagement"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="OrderWizard" Height="350" Width="525">
+        Title="Order Wizard" Height="350" Width="525">
     <Grid>
         <xctk:Wizard x:Name="wizard" FinishButtonClosesWindow="True" Finish="Wizard_Finish">
             <xctk:WizardPage x:Name="IntroPage" 
                                    Title="Welcome to Order Wizard"
+                             CanCancel="True"
                                    Description="You can select order options in this wizard." />
             <xctk:WizardPage x:Name="Page1" PageType="Interior"
                                    Title="Step 1"
                                    Description="Select the Customer."
+                             CanCancel="True"
                                    NextPage="{Binding ElementName=Page2}"
                                    PreviousPage="{Binding ElementName=IntroPage}"
-                             CanSelectNextPage="True">
+                             CanSelectNextPage="False">
                 <Grid>
                     <StackPanel Margin="0 0 0 10">
                         <TextBlock Text="Customer ID"/>
@@ -31,8 +33,9 @@
                        Title="Step 2"
                        Description="Select the Product."
                        NextPage="{Binding ElementName=LastPage}"
+                             CanCancel="True"
                        PreviousPage="{Binding ElementName=Page1}"
-                 CanSelectNextPage="True">
+                 CanSelectNextPage="False">
                 <Grid>
                     <StackPanel Margin="0 0 0 10">
                         <TextBlock Text="Product Name"/>
@@ -44,13 +47,14 @@
                     </StackPanel>
                 </Grid>
             </xctk:WizardPage>
-           
+
 
             <xctk:WizardPage x:Name="LastPage" PageType="Interior"
                                    Title="Step 3"
                                    Description="Select the Employee."
+                             CanCancel="True"
                               PreviousPage="{Binding ElementName=Page3}"
-                                   CanFinish="True">
+                                   CanFinish="False">
                 <Grid>
                     <StackPanel Margin="0 0 0 10">
                         <TextBlock Text="Employee ID"/>

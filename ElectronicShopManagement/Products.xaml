@@ -8,25 +8,23 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Products">
 
-    <Grid Margin="10,30">
+    <Grid Margin="0,50">
 
-        <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Margin="10,5,0,20">Product Inventory</TextBlock>
-
-        <ComboBox Name="FilterBy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,40,0,0" >
+        <ComboBox Name="FilterBy" HorizontalAlignment="Left" VerticalAlignment="Top" Width="185" Margin="10,27,0,0" >
             <ComboBoxItem Content="Name"/>
             <ComboBoxItem Content="Category"/>
         </ComboBox>
 
-        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="210,40,0,0" >Search a product</TextBox>
+        <TextBox Name="TxbFilter" TextChanged="TxbFilter_TextChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Width="257" Margin="210,27,0,0" >Search a product</TextBox>
 
-        <ListView Grid.Row="1" Name="LvProducts" SelectionMode="Single" Margin="10,80,10,10">
+        <ListView Grid.Row="1" Name="LvProducts" SelectionMode="Single" Margin="10,62,10,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="25" DisplayMemberBinding="{Binding ProdId}" />
-                    <GridViewColumn Header="Product name"  DisplayMemberBinding="{Binding ProdName}" />
-                    <GridViewColumn Header="Product Category"  DisplayMemberBinding="{Binding ProdCategory}" />
-                    <GridViewColumn Header="Product Quantity"  DisplayMemberBinding="{Binding ProdQty}" />
-                    <GridViewColumn Header="Product price"  DisplayMemberBinding="{Binding ProdPrice}" />
+                    <GridViewColumn Header="Id"  DisplayMemberBinding="{Binding ProdId}" />
+                    <GridViewColumn Header="Product Name" Width="250"  DisplayMemberBinding="{Binding ProdName}" />
+                    <GridViewColumn Header="Category" Width="150" DisplayMemberBinding="{Binding ProdCategory}" />
+                    <GridViewColumn Header="Quantity" Width="150" DisplayMemberBinding="{Binding ProdQty}" />
+                    <GridViewColumn Header="Product Price" Width="150" DisplayMemberBinding="{Binding ProdPrice}" />
                 </GridView>
 
             </ListView.View>
@@ -37,6 +35,6 @@
                 </ContextMenu>
             </ListView.ContextMenu>
         </ListView>
-        <Button x:Name="BtnAdd" Click="BtnAdd_Click"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="500,27,0,0"  Content="Add new product"/>
+        <Button x:Name="BtnAdd" Click="BtnAdd_Click"  HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="500,25,0,0"  Content="Add new product"/>
     </Grid>
 </Page>

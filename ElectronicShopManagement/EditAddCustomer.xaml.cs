@@ -20,7 +20,7 @@ namespace ElectronicShopManagement
     public partial class EditAddCustomer : Window
     {
         Customer currCustomer;
-        public EditAddCustomer(Customer currCustomer)
+        public EditAddCustomer(Customer currCustomer=null)
         {
             this.currCustomer = currCustomer;
 
